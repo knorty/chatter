@@ -21,7 +21,7 @@ class AddComment extends React.Component {
       const page_url = await getPageUrl();
       console.log('home',
         page_url)
-      const { data: comments } = await axios.get(`http://localhost:8080/page_comments?page_url=${encodeURIComponent(page_url)}`)
+      const { data: comments } = await axios.get(`https://chatter-ext.herokuapp.com/page_comments?page_url=${encodeURIComponent(page_url)}`)
       this.setState({ comments })
     } catch (error) {
       console.log('refresh', error)
@@ -55,7 +55,7 @@ class AddComment extends React.Component {
 
     axios({
       method: 'POST',
-      url: 'http://localhost:8080/post/comment',
+      url: 'https://chatter-ext.herokuapp.com/post/comment',
       data: {
         page_url,
         body: this.state.commentText,
@@ -91,7 +91,7 @@ class AddComment extends React.Component {
     return (
       this.state.commentBox === false ?
         <button className="add-comment-btn" onClick={this.setCommentBox}>
-          <img src={addIconLarge} alt="Add Icon" title="Add a Comment"/>
+          <img src={addIconLarge} alt="Add Icon" title="Add a Comment" />
         </button> :
         <div className="add-comment">
           <Textarea className="comment-textarea" value={this.state.commentText} onChange={this.setCommentText} placeholder="Type Comment Here"></Textarea>

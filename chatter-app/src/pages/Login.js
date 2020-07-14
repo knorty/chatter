@@ -30,7 +30,7 @@ export default class Login extends Component {
             email: this.state.email,
             password: this.state.password
         }
-        axios.post('http://localhost:8080/users/authenticate', body)
+        axios.post('https://chatter-ext.herokuapp.com/users/authenticate', body)
             .then(res => {
                 if (res.status === 200) {
                     localStorage.setItem('chatter token', res.data)

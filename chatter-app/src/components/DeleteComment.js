@@ -22,7 +22,7 @@ class DeleteComment extends Component {
   deleteComment = () => {
     axios({
       method: 'DELETE',
-      url: `http://localhost:8080/comments/${this.props.comment_id}`,
+      url: `https://chatter-ext.herokuapp.com/comments/${this.props.comment_id}`,
       headers: {
         Authorization: localStorage.getItem('chatter token')
       }
