@@ -11,21 +11,29 @@ exports = module.exports = (db) => new Promise((resolve, reject) => {
   glob(`${db.loader.scripts}/**/*.sql`, (err, files) => {
     if (err) {
       reject(err);
-    } else {
-      resolve(files);
     }
+
+    resolve(files);
   });
 }).then(files => files.map(f => {
-  const extant = loadedFiles.find(qf => qf.file === f);
-
   const script = {
     schema: path.relative(db.loader.scripts, path.dirname(f)).replace(path.sep, '.'),
-    name: path.basename(f, '.sql'),
-    sql: extant || new pgp.QueryFile(f, {minify: true})
+    name: path.basename(f, '.sql')
   };
 
-  if (!extant) {
-    loadedFiles.push(script.sql);
+  const extant = loadedFiles.find(qf => qf.file === f);
+
+  if (extant) {
+    script.sql = extant;
+  } else {
+    const loaded = new pgp.QueryFile(f, {minify: true});
+
+    if (loaded.error) {
+      throw loaded.error;
+    }
+
+    loadedFiles.push(loaded);
+    script.sql = loaded;
   }
 
   const rawSQL = script.sql[pgp.as.ctf.toPostgres]();

@@ -17,16 +17,18 @@ program
   .option('-s, --scripts [dir]', 'Change the scripts directory (default ./db)', 'db')
   .parse(process.argv);
 
-if (program.database) {
-  program.connection = `postgres://localhost/${program.database}`;  // assume local user has rights
-} else if (!program.connection) {
+const opts = program.opts();
+
+if (opts.database) {
+  opts.connection = `postgres://localhost/${opts.database}`;  // assume local user has rights
+} else if (!opts.connection) {
   program.help();
   process.exit(1);
 }
 
-console.log(path.resolve(program.scripts));
+console.log(path.resolve(opts.scripts));
 
-massive({connectionString: program.connection}, {scripts: path.resolve(program.scripts)}).then(db => {
+massive({connectionString: opts.connection}, {scripts: path.resolve(opts.scripts)}).then(db => {
   console.log('Massive loaded and listening');
 
   const r = repl.start({

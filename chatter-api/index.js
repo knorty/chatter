@@ -16,7 +16,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.get('/data', (req, res) => res.send('Working'));
 
-massive(process.env.DATABASE_URL)
+massive({
+    host: 'localhost',
+    port: 5050,
+    database: 'chatter-dev',
+    user: 'kylenorton',
+})
+    // process.env.DATABASE_URL
     .then(db => {
         app.set('db', db);
         console.log('Postgres Connected');

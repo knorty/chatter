@@ -45,4 +45,4 @@ COMMENT ON COLUMN ${schema~}.${table~}.id IS 'The document primary key. Will be 
 COMMENT ON COLUMN ${schema~}.${table~}.body IS 'The document body, stored without primary key.';
 COMMENT ON COLUMN ${schema~}.${table~}.search IS 'Search vector for full-text search support.';
 COMMENT ON COLUMN ${schema~}.${table~}.created_at IS 'Timestamp for document creation.';
-COMMENT ON COLUMN ${schema~}.${table~}.created_at IS 'Timestamp for the record''s last modification.';
+COMMENT ON COLUMN ${schema~}.${table~}.updated_at IS 'Timestamp for the record''s last modification.';

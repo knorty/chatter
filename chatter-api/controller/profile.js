@@ -23,7 +23,7 @@ const profileEdit = (req, res) => {
         }
     )
         .then(data => {
-            res.send(console.log('Profile Data Entered', res.data))
+            res.send(console.log('Profile Data Entered', data))
         })
         .catch(error => {
             console.log(error)

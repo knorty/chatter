@@ -238,7 +238,7 @@ Writable.prototype.updateDoc = function (criteria, changes, options = {}) {
 
   statement.setCriteria(criteria, [JSON.stringify(changes)]);
 
-  const sql = `UPDATE ${this.delimitedFullName} SET "${options.body}" = COALESCE("${options.body}", '{}'::jsonb) || $1 WHERE ${statement.conditions} RETURNING *;`;
+  const sql = `UPDATE ${this.delimitedFullName} SET "${options.body}" = COALESCE("${options.body}", '{}'::jsonb) || $1 WHERE ${statement.predicate} RETURNING *;`;
 
   return this.db.query(sql, statement.params, statement);
 };

@@ -1,5 +1,3 @@
-const express = require("express")();
-
 // FIND a user by credentials
 const findUser = (req, res, next) => {
   req.app

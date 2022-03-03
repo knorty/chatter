@@ -1,5 +1,7 @@
 'use strict';
 
+const quote = require('./util/quote');
+
 /**
  * Base class for a database entity or script file.
  *
@@ -22,10 +24,8 @@ const Entity = function (spec) {
   this.name = spec.name;
   this.db = spec.db;
   this.loader = spec.loader;
-
-  // create delimited names now instead of at query time
-  this.delimitedName = `"${this.name}"`;
-  this.delimitedSchema = `"${this.schema}"`;
+  this.delimitedName = quote(this.name);
+  this.delimitedSchema = quote(this.schema);
 
   // handle naming when schema is other than default:
   if (this.schema !== this.db.currentSchema) {

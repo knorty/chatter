@@ -7,7 +7,7 @@ const _ = require('lodash');
  * being inserted or updated. Parameter list generation for WHERE clauses in
  * all statements is handled in {@linkcode module:where}.
  *
- * @module util/prepareParams
+ * @module prepareParams
  * @param {Array} fields - A list of fields to pick from each record.
  * @param {Array} records - A list of records.
  * @return {Array} An array containing the values of each key from each record,

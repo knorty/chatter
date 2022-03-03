@@ -17,15 +17,13 @@ SELECT * FROM (
     WHERE attnum > 0 AND attisdropped IS FALSE
     GROUP BY attrelid
   ), table_primary_keys AS (
-    SELECT tc.table_schema, tc.table_name,
-      array_agg(DISTINCT kc.column_name::text) FILTER (WHERE kc.column_name IS NOT NULL) AS columns
-    FROM information_schema.table_constraints tc
-    LEFT OUTER JOIN information_schema.key_column_usage kc
-      ON kc.constraint_schema = tc.table_schema
-      AND kc.table_name = tc.table_name
-      AND kc.constraint_name = tc.constraint_name
-    WHERE tc.constraint_type = 'PRIMARY KEY'
-    GROUP BY tc.table_schema, tc.table_name
+    SELECT c.conrelid, array_agg(att.attname::text) AS columns
+    FROM pg_catalog.pg_constraint AS c
+    JOIN pg_catalog.pg_attribute AS att
+      ON att.attrelid = c.conrelid
+      AND att.attnum = ANY (c.conkey)
+    WHERE c.contype = 'p'
+    GROUP BY c.conrelid
   ), foreign_keys AS (
     SELECT foreign_keys.conname AS constraint_name,
       originrel.relname AS origin_name,
@@ -35,12 +33,12 @@ SELECT * FROM (
       dependentns.nspname AS dependent_schema,
       array_agg(DISTINCT dependentatt.attname::text) AS dependent_columns
     FROM pg_catalog.pg_constraint AS foreign_keys
-      JOIN pg_class AS originrel ON originrel.oid = foreign_keys.confrelid
-      JOIN pg_namespace AS originns ON originns.oid = originrel.relnamespace
-      JOIN pg_attribute AS originatt ON originatt.attrelid = originrel.oid AND originatt.attnum = ANY(foreign_keys.confkey)
-      JOIN pg_class AS dependentrel ON dependentrel.oid = foreign_keys.conrelid
-      JOIN pg_namespace AS dependentns ON dependentns.oid = dependentrel.relnamespace
-      JOIN pg_attribute AS dependentatt ON dependentatt.attrelid = dependentrel.oid AND dependentatt.attnum = ANY(foreign_keys.conkey)
+      JOIN pg_catalog.pg_class AS originrel ON originrel.oid = foreign_keys.confrelid
+      JOIN pg_catalog.pg_namespace AS originns ON originns.oid = originrel.relnamespace
+      JOIN pg_catalog.pg_attribute AS originatt ON originatt.attrelid = originrel.oid AND originatt.attnum = ANY(foreign_keys.confkey)
+      JOIN pg_catalog.pg_class AS dependentrel ON dependentrel.oid = foreign_keys.conrelid
+      JOIN pg_catalog.pg_namespace AS dependentns ON dependentns.oid = dependentrel.relnamespace
+      JOIN pg_catalog.pg_attribute AS dependentatt ON dependentatt.attrelid = dependentrel.oid AND dependentatt.attnum = ANY(foreign_keys.conkey)
     WHERE foreign_keys.contype = 'f'
     GROUP BY foreign_keys.conname, originrel.relname, originns.nspname, dependentrel.relname, dependentns.nspname
   )
@@ -62,8 +60,7 @@ SELECT * FROM (
       ON cls.relnamespace = nsp.oid
       AND cls.relname = t.table_name
     LEFT OUTER JOIN table_primary_keys pks
-      ON pks.table_schema = t.table_schema
-      AND pks.table_name = t.table_name
+      ON pks.conrelid = cls.oid
     LEFT OUTER JOIN foreign_keys fks
       ON fks.dependent_schema = t.table_schema
       AND fks.dependent_name = t.table_name

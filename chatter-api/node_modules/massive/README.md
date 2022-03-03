@@ -11,8 +11,8 @@ Massive is _not_ an object-relational mapper (ORM)! It doesn't use models, it do
 
 Here are some of the highlights:
 
-* **Dynamic query generation**: Massive's versatile query builder supports a wide variety of operators in a simple [criteria object](https://massivejs.org/docs/criteria-objects), and can handle everything from complex sorting in [`order`](https://massivejs.org/docs/options-objects#ordering-results) to true upserts with[ `onConflictUpdate`](http://massivejs.org/docs/options-objects#onconflictupdate).
-* **Low overhead**: An API built from your schema means direct access to your tables, views, and functions; raw SQL when you need it; super-simple bulk operations; and no model classes to maintain!
+* **Dynamic query generation**: Massive's versatile query builder supports a wide variety of operators in a simple [criteria object](https://massivejs.org/docs/criteria-objects), and can handle everything from complex sorting in [`order`](https://massivejs.org/docs/options-objects#ordering-results) to true upserts with[ `onConflict`](https://massivejs.org/docs/options-objects#onconflict).
+* **Low overhead**: An API built from your schema means direct access to your tables, views, and functions; all the power of SQL loaded from your project's script files; super-simple bulk operations; and no model classes to maintain!
 * **Join what you need, when you need it**: Call [`join()`](https://massivejs.org/docs/joins-and-result-trees#readablejoin) on any table or view to use Massive's query and even persistence methods over multiple relations at once.
 * **Document storage**: PostgreSQL's JSONB data type makes it possible to blend relational and document techniques. Massive makes working with documents as straightforward as possible: objects in, objects out, with the metadata managed for you.
 * **Transactions**: Use [`db.withTransaction()`](https://massivejs.org/docs/tasks-and-transactions) to execute a callback with full Massive API support in a transaction scope, getting a promise which fulfills if it commits or rejects if it rolls back.
