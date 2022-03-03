@@ -13,7 +13,7 @@ class Profile extends Component {
   componentDidMount() {
     axios({
       method: 'GET',
-      url: 'https://chatter-ext.herokuapp.com/profile',
+      url: 'http://localhost:8080/profile',
       headers: {
         Authorization: localStorage.getItem('chatter token')
       }
@@ -45,7 +45,7 @@ class Profile extends Component {
 
     axios({
       method: 'PUT',
-      url: 'https://chatter-ext.herokuapp.com/profile/edit',
+      url: 'http://localhost:8080/profile/edit',
       data: {
         user_handle: this.state.name,
         email: this.state.email

@@ -13,7 +13,7 @@ class FireAndIce extends Component {
         ice: false
     }
     componentDidMount = () => {
-        axios.get(`https://chatter-ext.herokuapp.com/likes_dislikes/${this.props.comment_id}`)
+        axios.get(`http://localhost:8080/likes_dislikes/${this.props.comment_id}`)
             .then(res => {
                 this.setState({
                     fireTotal: res.data[0].likes_count,
@@ -36,7 +36,7 @@ class FireAndIce extends Component {
             })
             axios({
                 method: 'PUT',
-                url: `https://chatter-ext.herokuapp.com/decrease_dislikes/${this.props.comment_id}`,
+                url: `http://localhost:8080/decrease_dislikes/${this.props.comment_id}`,
                 data: fireData,
                 headers: {
                     Authorization: localStorage.getItem('chatter token')
@@ -51,7 +51,7 @@ class FireAndIce extends Component {
             })
             axios({
                 method: 'PUT',
-                url: `https://chatter-ext.herokuapp.com/increase_likes/${this.props.comment_id}`,
+                url: `http://localhost:8080/increase_likes/${this.props.comment_id}`,
                 data: fireData,
                 headers: {
                     Authorization: localStorage.getItem('chatter token')
@@ -65,7 +65,7 @@ class FireAndIce extends Component {
             })
             axios({
                 method: 'PUT',
-                url: `https://chatter-ext.herokuapp.com/decrease_likes/${this.props.comment_id}`,
+                url: `http://localhost:8080/decrease_likes/${this.props.comment_id}`,
                 data: fireData,
                 headers: {
                     Authorization: localStorage.getItem('chatter token')
@@ -86,7 +86,7 @@ class FireAndIce extends Component {
             })
             axios({
                 method: 'PUT',
-                url: `https://chatter-ext.herokuapp.com/decrease_likes/${this.props.comment_id}`,
+                url: `http://localhost:8080/decrease_likes/${this.props.comment_id}`,
                 data: iceData,
                 headers: {
                     Authorization: localStorage.getItem('chatter token')
@@ -101,7 +101,7 @@ class FireAndIce extends Component {
             })
             axios({
                 method: 'PUT',
-                url: `https://chatter-ext.herokuapp.com/increase_dislikes/${this.props.comment_id}`,
+                url: `http://localhost:8080/increase_dislikes/${this.props.comment_id}`,
                 data: iceData,
                 headers: {
                     Authorization: localStorage.getItem('chatter token')
@@ -115,7 +115,7 @@ class FireAndIce extends Component {
             })
             axios({
                 method: 'PUT',
-                url: `https://chatter-ext.herokuapp.com/decrease_dislikes/${this.props.comment_id}`,
+                url: `http://localhost:8080/decrease_dislikes/${this.props.comment_id}`,
                 data: iceData,
                 headers: {
                     Authorization: localStorage.getItem('chatter token')

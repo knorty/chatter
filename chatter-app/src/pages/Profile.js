@@ -16,7 +16,7 @@ class Profile extends Component {
   componentDidMount() {
     axios({
       method: "GET",
-      url: "https://chatter-ext.herokuapp.com/profile",
+      url: "http://localhost:8080/profile",
       headers: {
         Authorization: localStorage.getItem("chatter token")
       }

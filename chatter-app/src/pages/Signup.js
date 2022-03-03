@@ -23,7 +23,7 @@ class Signup extends Component {
             password: this.state.password
         }
 
-        axios.post('https://chatter-ext.herokuapp.com/createuser', credentials)
+        axios.post('http://localhost:8080/createuser', credentials)
             .then(res => console.log(res.data))
         this.setState({
             user_handle: '',

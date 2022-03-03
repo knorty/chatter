@@ -15,7 +15,7 @@ export default function withAuth(ComponentToProtect) {
         componentDidMount() {
             axios({
                 method: 'GET',
-                url: 'https://chatter-ext.herokuapp.com/checktoken',
+                url: 'http://localhost:8080/checktoken',
                 body: 'comment',
                 headers: {
                     Authorization: localStorage.getItem('chatter token')
