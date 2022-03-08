@@ -12,20 +12,15 @@ import DeleteComment from './DeleteComment';
 //import userIconSmall from '../svgs/user-icon-s.svg';
 
 class Comment extends Component {
-
-  constructor(props) {
-    super(props);
-    this.handleMouseHover = this.handleMouseHover.bind(this);
-    this.state = {
-      isHovering: false,
-    };
+  state = {
+    isHovering: false
   }
 
-  handleMouseHover() {
-    this.setState(this.toggleHoverState);
+  handleMouseHover = () => {
+    this.setState(this.toggleHoverState(this.state));
   }
 
-  toggleHoverState(state) {
+  toggleHoverState = (state) => {
     return {
       isHovering: !state.isHovering,
     };

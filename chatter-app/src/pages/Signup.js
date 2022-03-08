@@ -16,6 +16,28 @@ class Signup extends Component {
         })
     }
 
+    login = () => {
+        const body = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        axios.post('http://localhost:8080/users/authenticate', body)
+            .then(res => {
+                if (res.status === 200) {
+                    localStorage.setItem('chatter token', res.data)
+                    this.props.history.push('/');
+                } else {
+                    const error = new Error(res.error);
+                    throw error;
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error logging in please try again');
+            })
+        this.props.history.push('/');
+    }
+
     onSubmit = () => {
         const credentials = {
             user_handle: this.state.user_handle,
@@ -24,14 +46,7 @@ class Signup extends Component {
         }
 
         axios.post('http://localhost:8080/createuser', credentials)
-            .then(res => console.log(res.data))
-        this.setState({
-            user_handle: '',
-            email: '',
-            password: '',
-            confirm_password: ''
-        })
-        this.props.history.push('/login');
+            .then(this.login())
     }
 
     render() {
