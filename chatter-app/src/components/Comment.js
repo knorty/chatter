@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import '../css/Comment.css';
 import FireAndIce from './FireAndIce';
 import { Link } from 'react-router-dom';
-import DeleteComment from './DeleteComment';
+import CommentActions from './CommentActions';
 
 //POSSIBLY DELETE?
 //import axios from 'axios';
@@ -46,12 +46,10 @@ class Comment extends Component {
               {this.props.body}
             </div>
           </div>
-          {/* <CommentActions /> */}
-
           {
             this.state.isHovering &&
             <div className="delete-comment">
-              <DeleteComment comment_id={this.props.comment_id} />
+              <CommentActions comment_id={this.props.comment_id} />
             </div>
           }
 
