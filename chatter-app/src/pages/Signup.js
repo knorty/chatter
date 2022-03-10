@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Signup.css';
 import axios from 'axios';
-
 class Signup extends Component {
     state = {
         user_handle: '',
