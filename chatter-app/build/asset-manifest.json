@@ -1,35 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.c62bfda0.chunk.css",
-    "main.js": "/static/js/main.ef0bb19f.chunk.js",
-    "main.js.map": "/static/js/main.ef0bb19f.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.95527df2.js",
-    "runtime-main.js.map": "/static/js/runtime-main.95527df2.js.map",
-    "static/js/2.e910e455.chunk.js": "/static/js/2.e910e455.chunk.js",
-    "static/js/2.e910e455.chunk.js.map": "/static/js/2.e910e455.chunk.js.map",
+    "main.css": "/static/css/main.4c54eca0.css",
+    "main.js": "/static/js/main.437f6e1d.js",
+    "static/media/profile.jpg": "/static/media/profile.7cda8da441aec0b2bb05.jpg",
+    "static/media/ice-icon.svg": "/static/media/ice-icon.6e368e0bdd8c723c21a4b040600ee573.svg",
+    "static/media/ice-icon-gray.svg": "/static/media/ice-icon-gray.ea049c76af8ed6ed839caa84b0e8bc99.svg",
+    "static/media/fire-icon.svg": "/static/media/fire-icon.5d5d6ac42149f50271ba73c1942bd3f6.svg",
+    "static/media/fire-icon-gray.svg": "/static/media/fire-icon-gray.8f68e096af1e21812a22336312f5f98a.svg",
+    "static/media/add-icon-large.svg": "/static/media/add-icon-large.0ca82b7d861485bc2f919cb69a8c5d37.svg",
+    "static/media/add-icon.svg": "/static/media/add-icon.a57e988ef64b1c801409ebf42c92f72b.svg",
+    "static/media/user-icon.svg": "/static/media/user-icon.a44ce86052de29de0329c8fc85758de0.svg",
+    "static/media/c-logo.svg": "/static/media/c-logo.366cfaf5664e16f37d47de611944155d.svg",
+    "static/media/close-icon.svg": "/static/media/close-icon.d839215a7e68cc010ac66a3e48f10118.svg",
+    "static/media/edit.svg": "/static/media/edit.8a635d72ab0a65ab61a44220f83a6e79.svg",
     "index.html": "/index.html",
-    "precache-manifest.9bcb429896d9701aa90fa202f0c9dfc6.js": "/precache-manifest.9bcb429896d9701aa90fa202f0c9dfc6.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.c62bfda0.chunk.css.map": "/static/css/main.c62bfda0.chunk.css.map",
-    "static/js/2.e910e455.chunk.js.LICENSE.txt": "/static/js/2.e910e455.chunk.js.LICENSE.txt",
-    "static/media/add-icon-large.svg": "/static/media/add-icon-large.fac9efba.svg",
-    "static/media/add-icon.svg": "/static/media/add-icon.506148ee.svg",
-    "static/media/c-logo.svg": "/static/media/c-logo.f8698938.svg",
-    "static/media/close-icon.svg": "/static/media/close-icon.a0a40a38.svg",
-    "static/media/edit.svg": "/static/media/edit.afb26329.svg",
-    "static/media/fire-icon-gray.svg": "/static/media/fire-icon-gray.2c9fa7b6.svg",
-    "static/media/fire-icon.svg": "/static/media/fire-icon.fa616d92.svg",
-    "static/media/ice-icon-gray.svg": "/static/media/ice-icon-gray.77b84a84.svg",
-    "static/media/ice-icon.svg": "/static/media/ice-icon.fce69df7.svg",
-    "static/media/more.svg": "/static/media/more.59679b1b.svg",
-    "static/media/profile.jpg": "/static/media/profile.594c6100.jpg",
-    "static/media/share.svg": "/static/media/share.4ad189ce.svg",
-    "static/media/user-icon.svg": "/static/media/user-icon.ed06e003.svg"
+    "main.4c54eca0.css.map": "/static/css/main.4c54eca0.css.map",
+    "main.437f6e1d.js.map": "/static/js/main.437f6e1d.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.95527df2.js",
-    "static/js/2.e910e455.chunk.js",
-    "static/css/main.c62bfda0.chunk.css",
-    "static/js/main.ef0bb19f.chunk.js"
+    "static/css/main.4c54eca0.css",
+    "static/js/main.437f6e1d.js"
   ]
 }

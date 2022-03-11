@@ -14,28 +14,28 @@ class Signup extends Component {
             [e.target.name]: e.target.value
         })
     }
-
-    login = () => {
-        const body = {
-            email: this.state.email,
-            password: this.state.password
-        }
-        axios.post('http://localhost:8080/users/authenticate', body)
-            .then(res => {
-                if (res.status === 200) {
-                    localStorage.setItem('chatter token', res.data)
-                    this.props.history.push('/');
-                } else {
-                    const error = new Error(res.error);
-                    throw error;
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                alert('Error logging in please try again');
-            })
-        this.props.history.push('/');
-    }
+    // Login isn't running properly after signup
+    // login = () => {
+    //     const body = {
+    //         email: this.state.email,
+    //         password: this.state.password
+    //     }
+    //     axios.post('http://localhost:8080/users/authenticate', body)
+    //         .then(res => {
+    //             if (res.status === 200) {
+    //                 localStorage.setItem('chatter token', res.data)
+    //                 this.props.history.push('/');
+    //             } else {
+    //                 const error = new Error(res.error);
+    //                 throw error;
+    //             }
+    //         })
+    //         .catch(err => {
+    //             console.error(err);
+    //             alert('Error logging in please try again');
+    //         })
+    //     this.props.history.push('/');
+    // }
 
     onSubmit = () => {
         const credentials = {
@@ -45,7 +45,7 @@ class Signup extends Component {
         }
 
         axios.post('http://localhost:8080/createuser', credentials)
-            .then(this.login())
+            .then(this.props.history.push('/Login'))
     }
 
     render() {
