@@ -14,13 +14,6 @@ import Signup from './pages/Signup';
 class App extends Component {
 
   render() {
-    // onClick={() => {
-    //   axios.get('http://localhost:8080/comments')
-    //     .then((res) => {
-    //       console.log(res)
-    //     })
-    //     .catch((err) => console.log(err));
-    // }}
     return (
       <div className="app" >
         <Navbar />

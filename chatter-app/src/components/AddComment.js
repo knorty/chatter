@@ -11,27 +11,8 @@ import { getPageUrl } from '../url';
 
 class AddComment extends React.Component {
   state = {
-    user_handle: "",
     commentBox: false,
     commentText: "",
-  }
-
-  refresh = async () => {
-    try {
-      const page_url = await getPageUrl();
-      console.log('home',
-        page_url)
-      const { data: comments } = await axios.get(`http://localhost:8080/page_comments?page_url=${encodeURIComponent(page_url)}`)
-      this.setState({ comments })
-    } catch (error) {
-      console.log('refresh', error)
-    }
-  }
-
-  setUserHandle = () => {
-    this.setState({
-      userHandle: !this.state.userHandle
-    })
   }
 
   setCommentBox = () => {
@@ -52,39 +33,37 @@ class AddComment extends React.Component {
     console.log('AddComments', page_url)
 
     const token = localStorage.getItem('chatter token')
-
-    axios({
-      method: 'POST',
-      url: 'http://localhost:8080/post/comment',
-      data: {
-        page_url,
-        body: this.state.commentText,
-        created_at: new Date().toISOString(),
-        likes_count: 0,
-        dislikes_count: 0,
-        replies_count: 0
-      },
-      headers: {
-        Authorization: token
-      }
-    })
-      .then(res => {
-        if (res.status === 200) {
-          this.setState({
-            commentBox: false,
-            commentText: "",
-          })
-          this.props.history.go(0);
-        } else {
-          const error = new Error(res.error);
-          throw error;
+    try {
+      const res = await axios({
+        method: 'POST',
+        url: 'http://localhost:8080/post/comment',
+        data: {
+          page_url,
+          body: this.state.commentText,
+          created_at: new Date().toISOString(),
+          likes_count: 0,
+          dislikes_count: 0,
+          replies_count: 0
+        },
+        headers: {
+          Authorization: token
         }
       })
-      .catch(err => {
-        console.error(err);
-        alert('Please Login Before Posting A Comment');
-        this.props.history.push('/login');
-      })
+      if (res.status === 200) {
+        this.setState({
+          commentBox: false,
+          commentText: "",
+        })
+        this.props.history.go(0);
+      } else {
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Please Login Before Posting A Comment');
+      this.props.history.push('/login');
+    }
   }
 
   render() {
@@ -104,7 +83,6 @@ class AddComment extends React.Component {
             </button>
           </div>
         </div>
-
     )
   }
 }

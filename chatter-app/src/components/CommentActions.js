@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import ReplyComment from '../components/ReplyComment';
 import axios from 'axios';
-import addIcon from '../svgs/add-icon.svg';
 // import { FaMeteor } from 'react-icons/fa';
 import { TiTrash } from 'react-icons/ti';
 import '../css/CommentActions.css';
@@ -42,13 +41,7 @@ class CommentActions extends Component {
                         <button className="view-replies-btn"><div className="text-subtle">View Replies (0)</div></button>
                         <TiTrash title="destroy" size="17px" color="#E84855" onClick={this.deleteComment} />
                     </div> : <div className="reply-task-bar-container">
-                        {/* Need to add comment replies component */}
-                        <ReplyComment />
-                        <div className="add-reply-options">
-                            <button className="post-reply-btn">
-                                <img src={addIcon} alt="Add Icon" />
-                            </button>
-                        </div>
+                        <ReplyComment comment_id={this.props.comment_id} />
                     </div>}
             </div>
         )

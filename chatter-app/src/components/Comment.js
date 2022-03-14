@@ -12,24 +12,11 @@ import CommentActions from './CommentActions';
 //import userIconSmall from '../svgs/user-icon-s.svg';
 
 class Comment extends Component {
-  state = {
-    isHovering: false
-  }
-
-  handleMouseHover = () => {
-    this.setState(this.toggleHoverState(this.state));
-  }
-
-  toggleHoverState = (state) => {
-    return {
-      isHovering: !state.isHovering,
-    };
-  }
 
   render() {
     dayjs.extend(relativeTime)
     return (
-      <div className="comment" key={this.props.comment_id} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
+      <div className="comment" key={this.props.comment_id}>
         <div className="comment-side-bar">
           {/* <img className="user-icon-small" src={userIconSmall} alt="User Icon Small" /> */}
           <FireAndIce
@@ -46,13 +33,9 @@ class Comment extends Component {
               {this.props.body}
             </div>
           </div>
-          {
-            this.state.isHovering &&
-            <div className="delete-comment">
-              <CommentActions comment_id={this.props.comment_id} />
-            </div>
-          }
-
+          <div className="delete-comment">
+            <CommentActions comment_id={this.props.comment_id} />
+          </div>
         </div>
       </div>
     )
