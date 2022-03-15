@@ -6,6 +6,7 @@ const massive = require('massive');
 const bodyParser = require('body-parser');
 
 const comments = require('./controller/comments');
+const replies = require('./controller/replies');
 const profile = require('./controller/profile');
 const authentication = require('./controller/authentication');
 const login = require('./controller/login');
@@ -29,6 +30,7 @@ massive({
         app.get('/comments', comments.getComments);
         app.get('/page_comments', comments.getCommentsByURL);
         app.post('/post/comment', withAuth, comments.postComment);
+        app.post('/post/reply', withAuth, replies.postReply);
         app.delete('/comments/:comment_id', withAuth, comments.deleteComment);
 
         app.get('/profile', withAuth, profile.getProfile);
@@ -42,6 +44,7 @@ massive({
         app.put('/increase_dislikes/:comment_id', withAuth, likes_dislikes.increaseDislikes)
         app.put('/decrease_likes/:comment_id', withAuth, likes_dislikes.decreaseLikes)
         app.put('/decrease_dislikes/:comment_id', withAuth, likes_dislikes.decreaseDislikes)
+        app.put('/increase_reply_count/:comment_id', withAuth, replies.increaseReplyCount)
 
         // Create a User
         app.post('/createuser', authentication.createUser)

@@ -35,6 +35,7 @@ class Home extends Component {
                 body={comment.body}
                 created_at={comment.created_at}
                 user_handle={comment.user_handle}
+                replies_count={comment.replies_count}
             />
             )
         }

@@ -12,12 +12,15 @@ import '../css/CommentActions.css';
 // const page_url = window.location.href;
 
 class CommentActions extends Component {
-    state = {
-        reply: false
+    constructor(props) {
+        super(props)
+        this.state = {
+            replyBox: false
+        }
     }
 
-    setReply = () => {
-        this.setState({ reply: !this.state.reply })
+    setReplyBox = () => {
+        this.setState({ replyBox: !this.state.replyBox })
     }
 
     deleteComment = () => {
@@ -35,13 +38,13 @@ class CommentActions extends Component {
     render() {
         return (
             <div className="comment-task-bar-container">
-                {this.state.reply === false ?
+                {this.state.replyBox === false ?
                     <div className="comment-task-bar">
-                        <button className="reply-btn" onClick={() => this.setReply()}><div className="text-subtle">Reply</div></button>
-                        <button className="view-replies-btn"><div className="text-subtle">View Replies (0)</div></button>
+                        <button className="reply-btn" onClick={this.setReplyBox}><div className="text-subtle">Reply</div></button>
+                        <button className="view-replies-btn"><div className="text-subtle">View Replies ({this.props.replies_count})</div></button>
                         <TiTrash title="destroy" size="17px" color="#E84855" onClick={this.deleteComment} />
                     </div> : <div className="reply-task-bar-container">
-                        <ReplyComment comment_id={this.props.comment_id} />
+                        <ReplyComment comment_id={this.props.comment_id} setReplyBox={this.setReplyBox} />
                     </div>}
             </div>
         )
