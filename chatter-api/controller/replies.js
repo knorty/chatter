@@ -1,3 +1,19 @@
+const getReplies = (req, res) => {
+    const db = req.app.get('db')
+    const { comment_id } = req.query
+    db.query(`
+            SELECT * FROM replies 
+            LEFT JOIN profile ON replies.user_id = profile.user_id
+            WHERE comment_id = \${comment_id}
+            `,
+        { comment_id }
+    )
+        .then(data => {
+            res.send(data)
+        })
+        .catch(console.error)
+};
+
 const postReply = (req, res) => {
     console.log(req.body)
     const db = req.app.get('db')
@@ -53,6 +69,7 @@ const increaseReplyCount = (req, res) => {
 }
 
 module.exports = {
+    getReplies,
     postReply,
     increaseReplyCount
 }

@@ -29,6 +29,7 @@ massive({
         console.log('Postgres Connected');
         app.get('/comments', comments.getComments);
         app.get('/page_comments', comments.getCommentsByURL);
+        app.get('/replies', replies.getReplies);
         app.post('/post/comment', withAuth, comments.postComment);
         app.post('/post/reply', withAuth, replies.postReply);
         app.delete('/comments/:comment_id', withAuth, comments.deleteComment);
