@@ -6,6 +6,7 @@ const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const profile = await req.app.get('db').profile.findOne({ email })
+        const user_handle = profile.user_handle
         if (profile) {
             const validPass = await bcrypt.compare(password, profile.password)
             if (validPass) {
@@ -13,7 +14,7 @@ const login = async (req, res) => {
                 const token = jwt.sign(payload, secret, {
                     expiresIn: '1h'
                 });
-                res.send(token);
+                res.send([token, user_handle]);
             }
         }
     } catch (e) {

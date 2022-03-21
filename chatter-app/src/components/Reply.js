@@ -14,14 +14,14 @@ class Reply extends Component {
     render() {
         dayjs.extend(relativeTime)
         return (
-            <div className="comment" key={this.props.reply_id}>
-                <div className="comment-content">
+            <div key={this.props.reply_id}>
+                <div>
                     <div>
                         <div>
                             <Link className="commentor-username" to={`/view-profile/${this.props.user_handle}`}>{this.props.user_handle}</Link>
                         </div>
                         <div className="text-subtle-2">{dayjs(this.props.created_at).fromNow()}</div>
-                        <div className="comment-text">
+                        <div>
                             {this.props.body}
                         </div>
                     </div>

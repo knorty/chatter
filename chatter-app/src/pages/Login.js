@@ -33,7 +33,8 @@ export default class Login extends Component {
         axios.post('http://localhost:8080/users/authenticate', body)
             .then(res => {
                 if (res.status === 200) {
-                    localStorage.setItem('chatter token', res.data)
+                    localStorage.setItem('chatter token', res.data[0])
+                    localStorage.setItem('user_handle', res.data[1])
                     this.props.history.push('/');
                 } else {
                     const error = new Error(res.error);

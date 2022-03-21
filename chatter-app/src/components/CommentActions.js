@@ -57,6 +57,9 @@ class CommentActions extends Component {
 
     render() {
         if (!this.state.replies) return <div>{'Loading...'}</div>
+        const user_handle = localStorage.getItem('user_handle')
+        console.log(user_handle)
+        console.log(this.props.user_handle)
         const replies = this.state.replies.map((reply, i) => {
             return (<Reply
                 key={i}
@@ -77,7 +80,7 @@ class CommentActions extends Component {
                     <div className="comment-task-bar">
                         <button className="reply-btn" onClick={this.setReplyBox}><div className="text-subtle">Reply</div></button>
                         <button className="view-replies-btn" onClick={this.setViewReplies}><div className="text-subtle">View Replies ({this.props.replies_count})</div></button>
-                        <TiTrash title="destroy" size="17px" color="#E84855" onClick={this.deleteComment} />
+                        {this.props.user_handle === user_handle ? <div className="delete-comment-btn"><TiTrash title="destroy" size="17px" color="#E84855" onClick={this.deleteComment} /></div> : <div></div>}
                     </div> : <div className="reply-task-bar-container">
                         <ReplyComment comment_id={this.props.comment_id} setReplyBox={this.setReplyBox} />
                     </div>}

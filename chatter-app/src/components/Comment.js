@@ -34,7 +34,7 @@ class Comment extends Component {
             </div>
           </div>
           <div className="delete-comment">
-            <CommentActions comment_id={this.props.comment_id} replies_count={this.props.replies_count} />
+            <CommentActions comment_id={this.props.comment_id} replies_count={this.props.replies_count} user_handle={this.props.user_handle} />
           </div>
         </div>
       </div>
