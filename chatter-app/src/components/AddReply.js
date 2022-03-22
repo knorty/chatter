@@ -4,10 +4,10 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import addIcon from '../svgs/add-icon.svg';
 import closeIcon from '../svgs/close-icon.svg';
-import '../css/ReplyComment.css';
+import '../css/AddReply.css';
 
 
-class ReplyComment extends React.Component {
+class AddReply extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -90,4 +90,4 @@ class ReplyComment extends React.Component {
     }
 }
 
-export default withRouter(ReplyComment);
+export default withRouter(AddReply);

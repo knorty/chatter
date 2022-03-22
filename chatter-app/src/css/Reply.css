@@ -1,0 +1,33 @@
+.reply {
+    min-width: 150px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 0px 10px 0px 10px;
+    background-color: #393f3d;
+    color: #f7fffc;
+    border-left-style: inset;
+  }
+  
+  .reply-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 85%;
+  }
+  
+  .replier-username {
+    font-family: Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #00ffb2;
+  }
+  
+  .reply-text {
+    margin-top: 10px;
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+  }

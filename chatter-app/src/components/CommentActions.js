@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import ReplyComment from './ReplyComment';
+import AddReply from './AddReply';
 import Reply from './Reply';
 import axios from 'axios';
 // import { FaMeteor } from 'react-icons/fa';
 import { TiTrash } from 'react-icons/ti';
+import closeIcon from '../svgs/close-icon.svg';
 import '../css/CommentActions.css';
 // var page_url;
 // window.chrome.tabs.getSelected(null, function (tab) {
@@ -73,7 +74,9 @@ class CommentActions extends Component {
         )
         let content;
         if (this.state.viewReplies) {
-            content = <div>{replies}</div>
+            content = <div><div><button className="close-btn" onClick={this.setViewReplies}>
+                <img src={closeIcon} alt="Close Icon" />
+            </button></div><div>{replies}</div></div>
         } else {
             content = <div>
                 {this.state.replyBox === false ?
@@ -82,7 +85,7 @@ class CommentActions extends Component {
                         <button className="view-replies-btn" onClick={this.setViewReplies}><div className="text-subtle">View Replies ({this.props.replies_count})</div></button>
                         {this.props.user_handle === user_handle ? <div className="delete-comment-btn"><TiTrash title="destroy" size="17px" color="#E84855" onClick={this.deleteComment} /></div> : <div></div>}
                     </div> : <div className="reply-task-bar-container">
-                        <ReplyComment comment_id={this.props.comment_id} setReplyBox={this.setReplyBox} />
+                        <AddReply comment_id={this.props.comment_id} setReplyBox={this.setReplyBox} />
                     </div>}
             </div>
         }

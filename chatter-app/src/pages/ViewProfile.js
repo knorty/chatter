@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "../css/Profile.css";
 import avatar from "../Images/profile.jpg";
 
-class viewProfile extends Component {
+class ViewProfile extends Component {
     state = {
         user_handle: ''
     }
@@ -48,4 +48,4 @@ class viewProfile extends Component {
     }
 }
 
-export default viewProfile;
+export default ViewProfile;

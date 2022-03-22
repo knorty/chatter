@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "../css/profile-edit.css";
+import "../css/ProfileEdit.css";
 import axios from "axios";
 import avatar from "../Images/profile.jpg";
 
 
-class Profile extends Component {
+class ProfileEdit extends Component {
   state = {
     name: "",
     email: ""
@@ -90,4 +90,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default ProfileEdit;
